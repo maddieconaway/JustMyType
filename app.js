@@ -62,18 +62,17 @@ $(document).ready(function (e) {
         }
         if (gameover) {
             setLetterDisplay('');
-            $('#sentence').css('color','white');
+            $('#sentence').css('color', 'white');
             setBoxPosition(2000);
 
             let timerEnd = new Date();
             let diff = Math.abs(new Date(timerEnd) - new Date(timerStart));
-            let seconds = Math.floor(diff / 1000);
-            let minutes = Math.floor(seconds / 60);
+            let minutes = Math.floor(diff / 60000);
             let wpm = 54 / minutes - 2 * oops;
             $('#feedback').find('span').remove();
             $('#feedback').append('<span class="gameover">Game Over! Words per minute: ' + wpm + ' Number of errors: ' + oops + ' Play again? </span>');
-$('#feedback').append('<button id="btnYes" onClick="window.location.reload();">Yes</button>&nbsp;');
-$('#feedback').append('<button id="btnNo">No</button>');
+            $('#feedback').append('<button id="btnYes" onClick="window.location.reload();">Yes</button>&nbsp;');
+            $('#feedback').append('<button id="btnNo">No</button>');
         }
     });
 
